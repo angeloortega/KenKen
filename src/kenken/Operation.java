@@ -30,7 +30,7 @@ public class Operation {
         float auxResult = 0;
         switch(operationType){
             case POWER:
-                auxResult = (float) Math.pow(2, cells.get(0).number);
+                auxResult = (float) Math.pow(cells.get(0).number,3);
                 break;
             case SUM:
                 for(int i = 0; i < cells.size(); i++){
@@ -107,13 +107,10 @@ public class Operation {
                         operationType = OperationType.DIV;
                     }
                 }
-                else if(r.nextInt() < probMod){
-                    if(OperationValidator.notZero(cells)){
-                        operationType = OperationType.MOD;
-                    }
-                }
                 else if(r.nextInt() < probMult){
-                    operationType = OperationType.MULT;
+                    if(OperationValidator.notZero(cells)){
+                        operationType = OperationType.MULT;
+                    }
                 }
                 else if(r.nextInt() < probSum){
                     operationType = OperationType.SUM;
